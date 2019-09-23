@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Person from "./Person/Person"
 import './App.css';
+import './Person/Person.css';
 
 class App extends Component {
 state = {
@@ -32,13 +33,10 @@ nameChangedHandler =(event) =>
      
    {name: "mac" , age:"28"} ,
    {name: event.target.value, age:"29"},
-    {name :"dsena" , age:"24"}
+    {name :"megha", age:"24"}
   
  ]})
 }
-
-
-
 
 
   render() {
@@ -47,17 +45,29 @@ nameChangedHandler =(event) =>
         <h1>am a react app</h1>
         <p>Its working!!!</p>
         <button onClick={() =>this.switchNameHandler("megha!!!!!")}>switch name</button>
+
+
         <Person 
         name={this.state.persons[0].name}
          age={this.state.persons[0].age}/>
+
+
+
         <Person 
         name={this.state.persons[1].name} 
         age={this.state.persons[1].age}
         click={this.switchNameHandler.bind(this,"ayan")}
-        changed ={this.nameChangedHandler}> my hobbies</Person>
+
+        changed ={this.nameChangedHandler}> my hobbies 
+        
+        </Person>
+
+
         <Person
         name={this.state.persons[2].name}
-         age={this.state.persons[2].age} click={this.switchNameHandler.bind(this,"aryn")}/>
+         age={this.state.persons[2].age}
+         click={this.switchNameHandler.bind(this,"aryn")}
+        />
       </div>
     );
   }
