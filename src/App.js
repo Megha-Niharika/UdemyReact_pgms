@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Person from "./Person/Person"
 import './App.css';
 import './Person/Person.css';
-import Radium,{StyleRoot} from "radium"
+
 
 class App extends Component {
   state = {
@@ -37,19 +37,15 @@ class App extends Component {
     this.setState({persons :persons}) //updated one adding
   }
 
-  nameChangedHandler = (event, id) => {
-
-    const personIndex = this.state.persons.findIndex(p =>{
+      nameChangedHandler = (event, id) =>
+       {
+       const personIndex = this.state.persons.findIndex(p =>{
       return p.id === id;
-    })
-
-
-    const person = 
-    {...this.state.persons[personIndex]
-    };
-
+       })
+          const person = 
+          {...this.state.persons[personIndex]
+       };
      person.name = event.target.value;
-
      const persons =[...this.state.persons]
      persons[personIndex] = person;
 
@@ -72,11 +68,7 @@ class App extends Component {
       border: "1px solid blue",
       padding: "8px",
       cursor: "pointer",
-      ':hover'
-      :{
-        backgroundColor:'lightgreen',
-        color:'black'
-      }
+      
     };
 
 
@@ -117,11 +109,7 @@ class App extends Component {
         /> */}
       </div> 
         );
-        style.backgroundColor="red"
-        style[':hover'] = {
-        backgroundColor:'salmon',
-        color: 'black'
-      }
+      
       }
         const classes = [];
         if(this.state.persons.length <=2)
@@ -134,7 +122,7 @@ class App extends Component {
     }
      
     return (
-      <StyleRoot>
+  
       <div className="App">
         <h1>React App</h1>
         <p className={classes.join(' ')}>Its working correctly!!!</p>
@@ -143,8 +131,8 @@ class App extends Component {
           onClick={this.togglePersonsHandler}>Switch Name</button>
           {persons}
       </div>
-      </StyleRoot>
+   
     );
   }
 }
-export default Radium(App);
+export default App;
