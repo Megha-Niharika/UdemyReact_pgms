@@ -6,7 +6,6 @@ import './Person/Person.css';
 class App extends Component {
   state = {
     persons: [
-
       { name: "Abhay", age: "28" },
       { name: "vivan", age: "29" },
       { name: "dsena", age: "26" }
@@ -60,7 +59,13 @@ class App extends Component {
         persons = (
 
         <div>
-        <Person
+          {this.state.persons.map(person => {
+            return <Person
+             name={person.name}
+             age = {person.age}/>
+
+          })}
+        {/* <Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age} />
         <Person
@@ -74,10 +79,9 @@ class App extends Component {
           name={this.state.persons[2].name}
           age={this.state.persons[2].age}
           click={this.switchNameHandler.bind(this, "aryn")}
-        />
+        /> */}
       </div> 
         );
-    
       }
 
     return (
@@ -89,12 +93,7 @@ class App extends Component {
           onClick={this.togglePersonsHandler}>Switch Name</button>
           {persons}
       </div>
-
-
     );
   }
 }
-// return React.createElement('div',{className:'App'}, React.createElement('h1',null,'Hi, I am Rea!!'));  
-
-
 export default App;
