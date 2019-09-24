@@ -32,22 +32,18 @@ class App extends Component {
   {
 // const persons = this.state.persons.slice(); 
 
-//fetch all persons
-
-const persons = [... this.state.persons]
+const persons = [... this.state.persons]//fetch all persons
 persons.splice(personIndex, 1) //delete element 1
  this.setState({persons :persons}) //updated one adding
   }
-
-
 
   nameChangedHandler = (event) => {
     this.setState({
       persons: [
 
-        { name: "mac", age: "28" },
-        { name: event.target.value, age: "29" },
-        { name: "megha", age: "24" }
+        { id:"1"  ,name: "mac", age: "28" },
+        { id:"2", name: event.target.value, age: "29" },
+        { id: "3" ,name: "megha", age: "24" }
 
       ]
     })
@@ -67,6 +63,8 @@ persons.splice(personIndex, 1) //delete element 1
       cursor: "pointer"
     };
 
+
+
       let persons = null;
 
       if ( this.state.showPersons) {
@@ -78,9 +76,13 @@ persons.splice(personIndex, 1) //delete element 1
             click= {() =>
             this.deletePersonHandler(index)}
              name={person.name}
-             age = {person.age}/>
+             age = {person.age}
+             key ={person.id}
+             />
 
           })}
+
+
         {/* <Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age} />
