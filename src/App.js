@@ -32,20 +32,30 @@ class App extends Component {
   {
 // const persons = this.state.persons.slice(); 
 
-const persons = [... this.state.persons]//fetch all persons
+const persons = [...this.state.persons]//fetch all persons
 persons.splice(personIndex, 1) //delete element 1
  this.setState({persons :persons}) //updated one adding
   }
 
-  nameChangedHandler = (event) => {
+  nameChangedHandler = (event, id) => {
+
+    const personIndex = this.state.persons.findIndex(p =>{
+      return p.id === id;
+    })
+
+
+    const person = 
+    {...this.state.persons[personIndex]
+    };
+
+     person.name = event.target.value;
+
+     const persons =[...this.state.persons]
+     persons[personIndex] = person;
+
+    //const person = Object.assign({},this.state.persons[personIndex])
     this.setState({
-      persons: [
-
-        { id:"1"  ,name: "mac", age: "28" },
-        { id:"2", name: event.target.value, age: "29" },
-        { id: "3" ,name: "megha", age: "24" }
-
-      ]
+      persons: persons
     })
   }
                                                                                        
@@ -78,6 +88,7 @@ persons.splice(personIndex, 1) //delete element 1
              name={person.name}
              age = {person.age}
              key ={person.id}
+             changed={ (event) => this.nameChangedHandler(event , person.id)}
              />
 
           })}
