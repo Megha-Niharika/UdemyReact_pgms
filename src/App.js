@@ -45,7 +45,7 @@ class App extends Component {
     this.setState({ showPersons: !doesShow });
 
   }
-  render() {
+  render () {
     const style = {
       backgroundColor: "white",
       font: "inherit",
@@ -54,35 +54,40 @@ class App extends Component {
       cursor: "pointer"
     };
 
+      let persons = null;
+
+      if ( this.state.showPersons) {
+        persons = (
+
+        <div>
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age} />
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+          click={this.switchNameHandler.bind(this, "ayan")}
+
+          changed={this.nameChangedHandler}> my hobbies
+    </Person>
+        <Person
+          name={this.state.persons[2].name}
+          age={this.state.persons[2].age}
+          click={this.switchNameHandler.bind(this, "aryn")}
+        />
+      </div> 
+        );
+    
+      }
 
     return (
       <div className="App">
         <h1>am a react app</h1>
         <p>Its working!!!</p>
         <button
-
           style={style}
           onClick={this.togglePersonsHandler}>Switch Name</button>
-        {this.state.showPersons === true?
-          <div>
-
-            <Person
-              name={this.state.persons[0].name}
-              age={this.state.persons[0].age} />
-            <Person
-              name={this.state.persons[1].name}
-              age={this.state.persons[1].age}
-              click={this.switchNameHandler.bind(this, "ayan")}
-
-              changed={this.nameChangedHandler}> my hobbies
-        </Person>
-            <Person
-              name={this.state.persons[2].name}
-              age={this.state.persons[2].age}
-              click={this.switchNameHandler.bind(this, "aryn")}
-            />
-          </div> :null
-        }
+          {persons}
       </div>
 
 
