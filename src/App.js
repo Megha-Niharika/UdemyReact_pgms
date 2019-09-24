@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Person from "./Person/Person"
 import './App.css';
 import './Person/Person.css';
+import Radium from "radium"
 
 class App extends Component {
   state = {
@@ -71,7 +72,12 @@ persons.splice(personIndex, 1) //delete element 1
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
-      cursor: "pointer"
+      cursor: "pointer",
+      ':hover'
+      :{
+        backgroundColor:'lightgreen',
+        color:'black'
+      }
     };
 
 
@@ -113,9 +119,11 @@ persons.splice(personIndex, 1) //delete element 1
       </div> 
         );
         style.backgroundColor="red"
+        style[':hover'] = {
+        backgroundColor:'salmon',
+        color: 'black'
       }
-
-
+      }
         const classes = [];
         if(this.state.persons.length <=2)
         {
@@ -138,4 +146,4 @@ persons.splice(personIndex, 1) //delete element 1
     );
   }
 }
-export default App;
+export default Radium(App);
