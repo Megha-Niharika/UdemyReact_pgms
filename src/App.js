@@ -66,7 +66,8 @@ persons.splice(personIndex, 1) //delete element 1
   }
   render () {
     const style = {
-      backgroundColor: "white",
+      backgroundColor: "green",
+      color:"white",
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
@@ -111,12 +112,24 @@ persons.splice(personIndex, 1) //delete element 1
         /> */}
       </div> 
         );
+        style.backgroundColor="red"
       }
 
+
+        const classes = [];
+        if(this.state.persons.length <=2)
+        {
+          classes.push('red')
+        }
+    if(this.state.persons.length <=1)
+    {
+      classes.push('bold')
+    }
+     
     return (
       <div className="App">
-        <h1>am a react app</h1>
-        <p>Its working!!!</p>
+        <h1>React App</h1>
+        <p className={classes.join(' ')}>Its working correctly!!!</p>
         <button
           style={style}
           onClick={this.togglePersonsHandler}>Switch Name</button>
