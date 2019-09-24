@@ -11,7 +11,9 @@ state = {
      {name: "vivan" , age:"29"},
       {name :"dsena" , age:"26"}
     
-  ]
+  ],
+  otherState: "some other value",
+  showPersons: false
 }
 
 switchNameHandler = (newName) =>
@@ -39,36 +41,54 @@ nameChangedHandler =(event) =>
 }
 
 
+
+togglePersonsHandler =() =>
+{
+const doesShow = this.state.showPersons;
+this.setState({showPersons: ! doesShow});
+
+}
   render() {
+ const style ={
+  backgroundColor :"white",
+  font: "inherit",
+  border: "1px solid blue",
+  padding: "8px",
+  cursor :"pointer"
+ };
+
+
     return (
       <div className="App">
         <h1>am a react app</h1>
         <p>Its working!!!</p>
-        <button onClick={() =>this.switchNameHandler("megha!!!!!")}>switch name</button>
+        <button
+        
+        style ={style}
+      onClick={this.togglePersonsHandler}>Switch Name</button>
+         { this.state.showPersons === true ?  
+          <div>
 
-
-        <Person 
+         <Person 
         name={this.state.persons[0].name}
          age={this.state.persons[0].age}/>
-
-
-
         <Person 
         name={this.state.persons[1].name} 
         age={this.state.persons[1].age}
         click={this.switchNameHandler.bind(this,"ayan")}
 
         changed ={this.nameChangedHandler}> my hobbies 
-        
         </Person>
-
-
         <Person
         name={this.state.persons[2].name}
          age={this.state.persons[2].age}
          click={this.switchNameHandler.bind(this,"aryn")}
         />
-      </div>
+      </div> : null
+         }
+            </div>
+
+        
     );
   }
 }
