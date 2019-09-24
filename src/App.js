@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Person from "./Person/Person"
 import './App.css';
 import './Person/Person.css';
-import Radium from "radium"
+import Radium,{StyleRoot} from "radium"
 
 class App extends Component {
   state = {
@@ -31,11 +31,10 @@ class App extends Component {
 
   deletePersonHandler = (personIndex) =>
   {
-// const persons = this.state.persons.slice(); 
-
-const persons = [...this.state.persons]//fetch all persons
-persons.splice(personIndex, 1) //delete element 1
- this.setState({persons :persons}) //updated one adding
+    // const persons = this.state.persons.slice(); 
+    const persons = [...this.state.persons]//fetch all persons
+    persons.splice(personIndex, 1) //delete element 1
+    this.setState({persons :persons}) //updated one adding
   }
 
   nameChangedHandler = (event, id) => {
@@ -135,6 +134,7 @@ persons.splice(personIndex, 1) //delete element 1
     }
      
     return (
+      <StyleRoot>
       <div className="App">
         <h1>React App</h1>
         <p className={classes.join(' ')}>Its working correctly!!!</p>
@@ -143,6 +143,7 @@ persons.splice(personIndex, 1) //delete element 1
           onClick={this.togglePersonsHandler}>Switch Name</button>
           {persons}
       </div>
+      </StyleRoot>
     );
   }
 }
